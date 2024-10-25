@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OTP Generation, Email, and Verification</title>
+    <link rel="stylesheet" href="css/otp.css">
+</head>
+<body>
+    <h1>OTP Generation, Email, and Verification</h1>
+    <h1><%= message %></h1>
+
+    <form id="generateOtpForm" onsubmit="generateOTP(); return false;">
+        <button type="submit" class="btn">Generate OTP and Send Email</button>
+        
+    </form>
+
+    <form id="verifyOtpForm" onsubmit="verifyOTP(); return false;">
+        <label for="otp">Enter OTP:</label>
+        <input type="text" id="otp" name="otp" required>
+        <button type="submit" class="btn">Verify OTP</button>
+    </form>
+
+    <div id="otpResult"></div>
+
+    <script>
+        function generateOTP() {
+            // Send a request to the server to generate an OTP and send an email
+            fetch('/generate-otp', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("otpResult").innerHTML = 'OTP Generated and Email Sent to:' + data.email;
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+
+        function verifyOTP() {
+            const enteredOTP = document.getElementById("otp").value;
+
+            // Send the entered OTP to the server for verification
+            fetch('/verify-otp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ otp: enteredOTP }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.valid) {
+                    document.getElementById("otpResult").innerHTML = "OTP Verified!";
+                   
+                } else {
+                    document.getElementById("otpResult").innerHTML = "Invalid OTP. Please try again.";
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        }
+    </script>
+</body>
+</html>

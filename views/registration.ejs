@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!--<title>Registration Form in HTML CSS</title>-->
+    <!---Custom CSS File--->
+    <link rel="stylesheet" href="css/style1.css" />
+  </head>
+  <body>
+    <section class="container">
+      <header>Registration Form</header>
+      <form action="/registration" class="form" method="POST">
+        <div class="input-box">
+          <label>Full Name</label>
+          <input type="text" placeholder="Enter full name" required name="full_name" />
+        </div>
+
+        <div class="input-box">
+          <label>Email Address</label>
+          <input type="text" placeholder="Enter email address" required name="email" />
+        </div>
+
+        <div class="column">
+          <div class="input-box">
+            <label>Phone Number</label>
+            <input type="number" placeholder="Enter phone number" required name="phone_no" />
+          </div>
+          <div class="input-box">
+            <label>Age</label>
+            <input type="number" placeholder="Enter age" required name="age" />
+          </div>
+        </div>
+        <div class="gender-box">
+          <h3>Gender</h3>
+          <div class="gender-option">
+            <div class="gender">
+              <input type="radio" id="check-male" name="gender" />
+              <label for="check-male">male</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-female" name="gender" />
+              <label for="check-female">Female</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-other" name="gender" />
+              <label for="check-other">prefer not to say</label>
+            </div>
+          </div>
+        </div>
+        <div class="input-box password">
+          <label>Password</label>
+          <input type="text" placeholder="Enter your password" required name="password" />
+          <label>Confirm your password</label>
+          <input type="text" placeholder="confirm password" required  name="confirm_password"/>
+          <div class="column">
+            <div class="select-box">
+              <select name="country">
+                <option hidden>Country</option>
+                <option>America</option>
+                <option>Japan</option>
+                <option>India</option>
+                <option>Nepal</option>
+              </select>
+            </div>
+            <input type="text" placeholder="Enter your city" required  name="city"/>
+          </div>
+          <div class="column">
+            <input type="text" placeholder="Enter your region" required name="region" />
+            <input type="number" placeholder="Enter postal code" required  name="postal_code"/>
+          </div>
+        </di>
+        <button type="submit" value="Registration">Submit</button>
+        <srcipt src="script.js"></srcipt>
+      </form>
+      
+        
+    </section>
+  </body>
+</html>
